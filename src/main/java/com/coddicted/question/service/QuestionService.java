@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface QuestionService {
     List<Question> getQuestions();
+    Question getQuestion(String id);
     Question createQuestion(Question question);
 }

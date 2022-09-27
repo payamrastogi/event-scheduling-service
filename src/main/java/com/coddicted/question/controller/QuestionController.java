@@ -19,6 +19,12 @@ public class QuestionController {
         return questionService.getQuestions();
     }
 
+    @GetMapping("/{id}")
+    public Question getQuestion(@PathVariable("id")  String id){
+        return questionService.getQuestion(id);
+    }
+
+
     @PostMapping
     public Question createQuestion(@RequestBody Question question){
         return questionService.createQuestion(question);
