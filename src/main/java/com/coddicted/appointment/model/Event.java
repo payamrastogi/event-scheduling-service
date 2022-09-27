@@ -1,5 +1,6 @@
 package com.coddicted.appointment.model;
 
+import com.coddicted.question.model.Question;
 import lombok.Data;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.coddicted.appointment.model;
+package com.coddicted.question.model;
 
 import lombok.Data;
 
