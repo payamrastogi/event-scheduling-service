@@ -2,20 +2,14 @@ package com.coddicted.question.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Set;
-
 @Data
-@Document(collection = "questions")
-public class Question {
+@Document(collection = "tags")
+public class Tag {
     @Id
     private String id;
     private String value;
+    private String description;
     private boolean isActive;
-    private boolean isRequired;
-    private Answer answer;
-    @DBRef
-    private Set<Tag> tagIdSet;
 }
