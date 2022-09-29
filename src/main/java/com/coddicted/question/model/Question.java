@@ -1,5 +1,6 @@
 package com.coddicted.question.model;
 
+import com.coddicted.question.annotation.CascadeSave;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -17,5 +18,6 @@ public class Question {
     private boolean isRequired;
     private Answer answer;
     @DBRef
-    private Set<Tag> tagIdSet;
+    @CascadeSave
+    private Tag tag;
 }
