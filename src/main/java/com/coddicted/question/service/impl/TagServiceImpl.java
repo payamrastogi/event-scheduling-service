@@ -5,6 +5,8 @@ import com.coddicted.question.repository.TagRepository;
 import com.coddicted.question.service.TagService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +19,8 @@ public class TagServiceImpl implements TagService {
     private TagRepository tagRepository;
 
     @Override
-    public List<Tag> getTags() {
-        return tagRepository.findAll();
+    public List<Tag> getTags(Pageable paging) {
+        return tagRepository.findAll(paging).toList();
     }
 
     @Override
@@ -30,7 +32,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public List<Tag> getTagsStartsWith(String str) {
-        return tagRepository.findByValueStartsWith(str);
+    public List<Tag> getTagsStartsWith(String str, Pageable paging) {
+        return tagRepository.findByValueStartsWith(str, paging).toList();
     }
 }
