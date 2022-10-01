@@ -9,4 +9,5 @@ public interface TagService {
     List<Tag> getTags(Pageable paging);
     Tag getTag(String id);
     List<Tag> getTagsStartsWith(String str, Pageable paging);
+    Tag save(Tag tag);
 }

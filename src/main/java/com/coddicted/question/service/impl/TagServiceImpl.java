@@ -35,4 +35,9 @@ public class TagServiceImpl implements TagService {
     public List<Tag> getTagsStartsWith(String str, Pageable paging) {
         return tagRepository.findByValueStartsWith(str, paging).toList();
     }
+
+    @Override
+    public Tag save(Tag tag){
+        return tagRepository.save(tag);
+    }
 }

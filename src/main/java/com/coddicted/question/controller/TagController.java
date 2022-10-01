@@ -10,6 +10,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/tags")
@@ -31,6 +32,20 @@ public class TagController {
             return tagService.getTagsStartsWith(startsWith, paging);
         }
         return tagService.getTags(paging);
+    }
+
+    @PostMapping
+    public Tag createTag(@RequestBody Tag tag){
+        return tagService.save(tag);
+    }
+
+    @PutMapping("/{id}")
+    public Tag updateTag(@PathVariable("id") String id, @RequestBody Tag tag){
+        Tag existingTag = getTag(id);
+        if(Objects.isNull(existingTag))
+            return null;
+        tag.setId(id);
+        return tagService.save(tag);
     }
 
 
