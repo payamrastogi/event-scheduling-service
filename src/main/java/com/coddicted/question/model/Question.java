@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -14,10 +15,9 @@ public class Question {
     @Id
     private String id;
     private String value;
-    private boolean isActive;
-    private boolean isRequired;
+    private boolean active;
+    private boolean required;
     private Answer answer;
     @DBRef
-    @CascadeSave
-    private Tag tag;
+    private Set<Tag> tagSet;
 }

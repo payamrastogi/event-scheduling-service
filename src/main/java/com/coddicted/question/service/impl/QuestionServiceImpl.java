@@ -5,6 +5,7 @@ import com.coddicted.question.repository.QuestionRepository;
 import com.coddicted.question.service.QuestionService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +18,8 @@ public class QuestionServiceImpl implements QuestionService {
     private QuestionRepository questionRepository;
 
     @Override
-    public List<Question> getQuestions() {
-        return questionRepository.findAll();
+    public List<Question> getQuestions(Pageable paging) {
+        return questionRepository.findAll(paging).toList();
     }
 
     @Override
@@ -33,4 +34,11 @@ public class QuestionServiceImpl implements QuestionService {
     public Question createQuestion(Question question) {
         return questionRepository.save(question);
     }
+
+    @Override
+    public List<Question> getQuestionsByTagId(String tagId) {
+        return questionRepository.findQuestionsByTag(tagId);
+    }
+
+
 }
