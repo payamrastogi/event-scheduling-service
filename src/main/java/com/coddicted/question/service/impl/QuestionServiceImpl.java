@@ -37,7 +37,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public List<Question> getQuestionsByTagId(String tagId) {
-        return questionRepository.findQuestionsByTag(tagId);
+        return questionRepository.findQuestionsByTagId(tagId);
     }
 
 

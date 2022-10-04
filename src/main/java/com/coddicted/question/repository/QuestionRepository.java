@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface QuestionRepository extends MongoRepository<Question, String> {
     List<Question> findAll();
-    @Query("{tagSet._id: {$in: tagId}}")
-    List<Question> findQuestionsByTag(String tagId);
+    @Query("{'tagSet._id': ?0}")
+    List<Question> findQuestionsByTagId(String tagId);
 }
