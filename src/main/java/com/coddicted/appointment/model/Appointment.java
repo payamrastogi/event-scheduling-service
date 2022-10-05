@@ -3,6 +3,7 @@ package com.coddicted.appointment.model;
 import lombok.Data;
 
 import java.time.ZonedDateTime;
+import java.util.TimeZone;
 
 @Data
 public class Appointment {
@@ -12,6 +13,7 @@ public class Appointment {
     private String appointmentOwnerId;
     private ZonedDateTime startDateTime;
     private ZonedDateTime endDateTime;
+    private TimeZone timeZone;
     private AppointmentStatus appointmentStatus;
     private AppointmentDetail appointmentDetail;
 }
