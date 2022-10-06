@@ -1,5 +1,7 @@
-package com.coddicted.question.config;
+package com.coddicted.config;
 
+import com.coddicted.converter.LocalTimeToString;
+import com.coddicted.converter.StringToLocalTime;
 import com.coddicted.question.listener.CascadeSaveMongoEventListener;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
@@ -8,15 +10,21 @@ import com.mongodb.client.MongoClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
+
+import java.util.Arrays;
 
 @Configuration
-@EnableMongoRepositories(basePackages = "com.coddicted")
-public class MongoConfig extends AbstractMongoClientConfiguration {
-
+public class MongoConfiguration extends AbstractMongoClientConfiguration  {
     @Override
     protected String getDatabaseName() {
         return "questions_db";
+    }
+
+    @Bean
+    public MongoCustomConversions customConversions() {
+        return new MongoCustomConversions(Arrays.asList(
+                new LocalTimeToString(), new StringToLocalTime()));
     }
 
     @Override
