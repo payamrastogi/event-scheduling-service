@@ -5,25 +5,24 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.util.TimeZone;
+import java.time.ZoneId;
 
-public class TimeZoneDeserializer extends StdDeserializer<TimeZone> {
+public class ZoneIdDeserializer extends StdDeserializer<ZoneId> {
 
-    public TimeZoneDeserializer() {
+    public ZoneIdDeserializer() {
         this(null);
     }
 
-    public TimeZoneDeserializer(Class<?> vc) {
+    public ZoneIdDeserializer(Class<?> vc) {
         super(vc);
     }
 
     @Override
-    public TimeZone deserialize(
+    public ZoneId deserialize(
             JsonParser jsonparser, DeserializationContext context)
             throws IOException {
-        String timeZone = jsonparser.getText();
-        return TimeZone.getTimeZone(timeZone);
+        String zoneId = jsonparser.getText();
+        return ZoneId.of(zoneId);
 
     }
 }
