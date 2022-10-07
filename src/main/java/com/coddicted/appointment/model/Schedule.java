@@ -22,7 +22,7 @@ public class Schedule {
     private String name;
     @JsonSerialize(using = ZoneIdSerializer.class)
     @JsonDeserialize(using = ZoneIdDeserializer.class)
-    private ZoneId timeZone;
+    private ZoneId zoneId;
     private ScheduleType scheduleType;
     private Map<DayOfWeek, List<Interval>> availabilityMap;
     private Map<LocalDate, List<Interval>> unavailabilityMap;
