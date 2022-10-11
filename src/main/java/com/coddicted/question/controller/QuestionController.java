@@ -20,7 +20,7 @@ public class QuestionController {
     @GetMapping
     public List<Question> getQuestions(@RequestParam(defaultValue = "0", name="page") int page,
                                        @RequestParam(defaultValue = "10", name="size") int size,
-                                       @RequestParam(name = "tagId") String tagId){
+                                       @RequestParam(name = "tagId", required = false) String tagId){
         Pageable paging = PageRequest.of(page, size);
         if(StringUtils.hasText(tagId)){
             return questionService.getQuestionsByTagId(tagId);

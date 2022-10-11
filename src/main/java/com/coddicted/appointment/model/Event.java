@@ -2,6 +2,7 @@ package com.coddicted.appointment.model;
 
 import com.coddicted.question.model.Question;
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.util.List;
 
@@ -13,6 +14,8 @@ public class Event {
     private String description;
     private String eventLink;
     private int duration;
+    @DBRef
     private Schedule schedule;
+    @DBRef
     private List<Question> questionList;
 }
